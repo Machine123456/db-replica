@@ -1,0 +1,18 @@
+spring:
+    datasource:
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        url: jdbc:mysql://database-1.chg7ujdhhts7.eu-west-3.rds.amazonaws.com:3306/bna-replica?createDatabaseIfNotExist=true
+        username: root
+        password: rootroot
+    jpa:
+        hibernate:
+            ddl-auto: update
+        show-sql: false # show sql logs
+        properties:
+            hibernate:
+                dialect: org.hibernate.dialect.MySQLDialect
+    mvc:
+       static-path-pattern: /static/**
+
+server:
+    port: 8091
