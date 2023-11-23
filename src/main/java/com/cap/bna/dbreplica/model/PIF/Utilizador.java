@@ -16,12 +16,9 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.PostUpdate;
-import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
-import jakarta.persistence.Transient;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -77,20 +74,5 @@ public class Utilizador {
       @Temporal(TemporalType.TIMESTAMP)
       @Column(name = "DATAALTSENHA")
       private Date dataAltSenha;
-      
-      @Transient
-      private String preSenha;
-
-      @PreUpdate
-      private void preUpdate() {
-            preSenha = senha;
-      }
-
-      @PostUpdate
-      private void posUpdate() {
-            if ((preSenha != null && !preSenha.equals(senha)) || (preSenha == null && senha != null)) {
-                  this.dataAltSenha = new Date();
-            }
-      }
 
 }
